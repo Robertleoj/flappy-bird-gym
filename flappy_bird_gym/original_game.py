@@ -92,11 +92,11 @@ def main():
     else:
         soundExt = '.ogg'
 
-    SOUNDS['die'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/die' + soundExt)
-    SOUNDS['hit'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/hit' + soundExt)
-    SOUNDS['point'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/point' + soundExt)
-    SOUNDS['swoosh'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/swoosh' + soundExt)
-    SOUNDS['wing'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/wing' + soundExt)
+    #SOUNDS['die'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/die' + soundExt)
+    #SOUNDS['hit'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/hit' + soundExt)
+    #SOUNDS['point'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/point' + soundExt)
+    #SOUNDS['swoosh'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/swoosh' + soundExt)
+    #SOUNDS['wing'] = pygame.mixer.Sound(ASSETS_DIR + '/audio/wing' + soundExt)
 
     while True:
         # select random background sprites
@@ -165,7 +165,7 @@ def show_welcome_animation():
                 sys.exit()
             if event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
                 # make first flap sound and return values for main_game
-                SOUNDS['wing'].play()
+                #SOUNDS['wing'].play()
                 return {
                     'player_y': player_y + player_shm_vals['val'],
                     'base_x': base_x,
@@ -236,7 +236,7 @@ def main_game(movement_info):
                 if player_y > -2 * IMAGES['player'][0].get_height():
                     player_vel_y = player_flap_acc
                     player_flapped = True
-                    SOUNDS['wing'].play()
+                    #SOUNDS['wing'].play()
 
         # check for crash here
         crash_test = check_crash({'x': player_x, 'y': player_y, 'index': player_index},
@@ -259,7 +259,7 @@ def main_game(movement_info):
             pipe_mid_pos = pipe['x'] + IMAGES['pipe'][0].get_width() / 2
             if pipe_mid_pos <= player_mid_pos < pipe_mid_pos + 4:
                 score += 1
-                SOUNDS['point'].play()
+                #SOUNDS['point'].play()
 
         # player_index base_x change
         if (loop_iter + 1) % 3 == 0:
@@ -338,9 +338,9 @@ def show_game_over_screen(crash_info):
     upper_pipes, lower_pipes = crash_info['upper_pipes'], crash_info['lower_pipes']
 
     # play hit and die sounds
-    SOUNDS['hit'].play()
-    if not crash_info['groundCrash']:
-        SOUNDS['die'].play()
+    #SOUNDS['hit'].play()
+    #if not crash_info['groundCrash']:
+    #    SOUNDS['die'].play()
 
     while True:
         for event in pygame.event.get():

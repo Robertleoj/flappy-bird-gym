@@ -139,6 +139,7 @@ def load_images(convert: bool = True,
 
 def load_sounds() -> Dict[str, pyg_mixer.Sound]:
     """ Loads and returns the audio assets of the game. """
+    return dict()
     pyg_mixer.init()
     sounds = {}
 
